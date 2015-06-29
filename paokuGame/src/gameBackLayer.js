@@ -37,7 +37,10 @@ var GameBackLayer = cc.Layer.extend({
 		
 		this.loadObjects(this.map00, 0);
 		this.loadObjects(this.map01, 1);
-
+		
+		var texture2D = this.spriteSheet.getTexture();
+		texture2D.setAliasTexParameters();
+		cc.director.setProjection(cc.Director.PROJECTION_2D);
 		
 		this.scheduleUpdate();
 	},
