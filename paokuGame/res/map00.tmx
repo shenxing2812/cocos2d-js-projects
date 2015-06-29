@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="10" tilewidth="32" tileheight="32" nextobjectid="17">
+ <tileset firstgid="1" name="map" tilewidth="32" tileheight="32">
+  <image source="map.png" width="128" height="128"/>
+ </tileset>
+ <layer name="background" width="20" height="10">
+  <data encoding="base64" compression="zlib">
+   eJztyzkKACAQBMFd7wP9/3PtcBJjE4NioGGmmc3ve6RjICLBEWRv3eWrfWGjoiGjyN56lq/2AzHrB70=
+  </data>
+ </layer>
+ <layer name="grass" width="20" height="10">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo4B4wA/EAlSkBzsAAPeoATc=
+  </data>
+ </layer>
+ <objectgroup name="coin">
+  <object id="10" x="314" y="193"/>
+  <object id="11" x="347" y="195"/>
+  <object id="12" x="379" y="198"/>
+  <object id="13" x="401" y="196"/>
+  <object id="14" x="432" y="198"/>
+  <object id="15" x="466" y="200"/>
+  <object id="16" x="498" y="200"/>
+ </objectgroup>
+ <objectgroup name="rock">
+  <object id="1" x="402" y="214"/>
+  <object id="4" x="311" y="245"/>
+  <object id="8" x="491" y="243"/>
+ </objectgroup>
+</map>
