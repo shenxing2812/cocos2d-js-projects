@@ -98,6 +98,7 @@ var AnimationLayer = cc.Layer.extend({
 	},
 	jump:function (power) {
 		cc.log("jump");
+		cc.audioEngine.playEffect(res.Jump_mp3);
 		this.body.applyImpulse(cp.v(0, power), cp.v(0, 0));
 		if (this.stat == RunnerStat.running) {
 			this.stat = RunnerStat.jumpUp;

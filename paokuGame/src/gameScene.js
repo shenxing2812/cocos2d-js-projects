@@ -33,12 +33,15 @@ var GameScene = cc.Scene.extend({
 				this.collisionRockBegin.bind(this), null, null, null);
 		
 		this.scheduleUpdate();
+		
+		cc.audioEngine.playMusic(res.Background_mp3, true);
 	},
 	
 	collisionRockBegin:function(arbiter, space){
 		cc.log("touch rock");
 		cc.director.pause();
 		this.addChild(new GameOverLayer());
+		cc.audioEngine.stopMusic();
 	},
 	
 	collisionCoinBegin:function(arbiter, space){
@@ -47,6 +50,8 @@ var GameScene = cc.Scene.extend({
 		
 		var statusLayer = this.getChildByTag(TagOfLayer.Status);
 		statusLayer.addCoin(1);
+		
+		cc.audioEngine.playEffect(res.Pickup_coin_mp3);
 	},
 	
 	update:function(dt){

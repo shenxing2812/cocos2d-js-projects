@@ -31,6 +31,13 @@ var GameBackLayer = cc.Layer.extend({
 		});
 		this.addChild(this.map01);
 		
+//		var arr = this.map00.getChildren();
+//		for ( var obj in arr) {
+//			if(!obj)
+//				return;
+//			obj.getTexture().setAntiAliasTexParameters();
+//		}
+		
 		cc.spriteFrameCache.addSpriteFrames(res.CoinAndRock_plist);
 		this.spriteSheet = cc.SpriteBatchNode.create(res.CoinAndRock_png);
 		this.addChild(this.spriteSheet);
@@ -99,10 +106,10 @@ var GameBackLayer = cc.Layer.extend({
 		if(this.mapIndex == newIndex)
 			return false;
 		if(newIndex % 2 == 0){
-			this.map01.setPositionX(this.mapWidth*(newIndex+1));
+			this.map01.setPositionX(this.map00.width+this.map00.x-1);
 			this.loadObjects(this.map01, newIndex + 1);
 		}else{
-			this.map00.setPositionX(this.mapWidth*(newIndex+1));
+			this.map00.setPositionX(this.map01.width+this.map01.x-1);
 			this.loadObjects(this.map00, newIndex + 1);
 		}
 		this.mapIndex = newIndex;
