@@ -41,9 +41,8 @@ var AnimationLayer = cc.Layer.extend({
 		this.sprite.runAction(this.runningAction);
 		this.spriteSheet.addChild(this.sprite);
 		
-//		this._debugNode = new cc.PhysicsDebugNode(this.space);
-//		// Parallax ratio and offset
-//		this.addChild(this._debugNode, 10);
+		this._debugNode = new cc.PhysicsDebugNode(this.space);
+		this.addChild(this._debugNode, 10);
 		
 		cc.eventManager.addListener({
 			event:cc.EventListener.TOUCH_ONE_BY_ONE,
