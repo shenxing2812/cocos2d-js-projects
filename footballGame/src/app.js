@@ -14,6 +14,18 @@ var HelloWorldLayer = cc.Layer.extend({
         this.initTouchEvent();
         this.createHero();
         this.scheduleUpdate();
+        
+      //  this.moveTo(cc.p(500,100));
+        
+//        var action1 = cc.rotateTo(1, 90);
+//        this.hero.runAction(action1);
+        
+        var s = new cc.Sprite(res.FootBall_png);
+        this.addChild(s);
+        
+        this.hero = s;
+        
+        
         return true;
     },
     createHero:function(){
@@ -94,7 +106,6 @@ var HelloWorldLayer = cc.Layer.extend({
     	this._debugNode = new cc.PhysicsDebugNode(this.space);
     	this.addChild(this._debugNode, 10);
     	
-    	this.hero.addTouch
     },
     initTouchEvent:function(){
     	cc.eventManager.addListener({
@@ -106,23 +117,28 @@ var HelloWorldLayer = cc.Layer.extend({
 		}, this);
     },
     onTouchBegan: function(touch,event){
-    	var p = touch.getLocationInView();
+    	var p = touch.getLocation();
     	var target = event.getCurrentTarget();
-    	if ( cc.rectContainsPoint(target.getBoundingBox(),p)) {
-    		cc.log("touched")
-    		return true;
-    	}
-    	return false;
+    	p = target.convertToNodeSpace(p);
+    	//	target.hero.setPosition(p);
+    	cc.log("px:"+p.x +" hero:"+target.hero);
+    	target.moveTo(p);
+    	return true;
     },
     onTouchMoved: function(touch,event){
-    	var p = touch.getLocationInView();
-    	var target = event.getCurrentTarget();
-    	p = target.convertToWorldSpace(p)
-    	target.hero.setPosition(p);
-// 	cc.log("onTouchMoved");
+    },
+    moveTo:function(p){
+    	var finish = new cc.CallFunc(function(){
+    		cc.log("move finish");
+    	}, this);
+    	var run = cc.moveTo(0.5,p);
+    	var action = cc.sequence([run,finish]);
+    	action.tag = 1;
+    	this.hero.stopActionByTag(1);
+    	this.hero.runAction(action);
     },
     onTouchEnded: function(touch,event){
-  //  	cc.log("onTouchEnded");
+
     },
     update:function(dt){
     	var wSize = cc.winSize;

@@ -14,3 +14,9 @@ if(typeof SpriteTag == "undefined") {
 	SpriteTag.coin = 1;
 	SpriteTag.rock = 2;
 };
+
+if(typeof VV == "undefined"){
+	var VV = {};
+	VV.a = 0;
+	VV.b = 0;
+}
