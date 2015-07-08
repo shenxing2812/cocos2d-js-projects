@@ -1,7 +1,11 @@
 var res = {
-    WelcomeBg_png : "res/HelloWorld.png",
-    StartNormal_png : "res/CloseNormal.png",
-    StartSelected_png : "res/CloseSelected.png"
+    WelcomeBg_png : "res/gameBg.png",
+    StartNormal_png : "res/btn_enterGame.png",
+    Hero_png:"res/hero.png",
+    Hero_plist:"res/hero.plist",
+    Map1_1_png : "res/400000.png",
+    Map1_2_png : "res/400000_2.png",
+    Map1_3_png : "res/400000_3.png"
 };
 
 var g_resources = [];

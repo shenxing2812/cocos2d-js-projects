@@ -12,13 +12,13 @@ var HelloWorldLayer = cc.Layer.extend({
         
         var closeItem = new cc.MenuItemImage(
             res.StartNormal_png,
-            res.StartSelected_png,
+            res.StartNormal_png,
             function () {
-                cc.log("Menu is clicked!");
+            	cc.director.pushScene(new CityScene());
             }, this);
         closeItem.attr({
-            x: size.width - 20,
-            y: 20,
+            x: size.width/2,
+            y: size.height/2-100,
             anchorX: 0.5,
             anchorY: 0.5
         });
