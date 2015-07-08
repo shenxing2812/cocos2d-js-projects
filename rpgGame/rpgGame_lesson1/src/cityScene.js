@@ -10,13 +10,43 @@ var CityLayer = cc.Layer.extend({
 	sprite:null,
 	backGroundLayer:null,
 	hero:null,
+	camera:null,
 	ctor:function () {
 		this._super();
 		this.initBg();
 		this.createHero();
 		this.initTouchEvent();
 		this.initNPC();
+		this.initCamera();
 		this.scheduleUpdate();
+	},
+	initCamera:function(){
+		this.camera = new Camera(this.hero);
+		var size = cc.winSize;
+		var item1 = new cc.MenuItemLabel("飞",function(){
+			this.camera.flyTo(1, cc.p(1000,200));
+		},this);
+		var item2 = new cc.MenuItemLabel("主角",function(){
+			this.camera.isWatchHero = true;
+		},this);
+		
+		item1.attr({
+			x: size.width/2,
+			y: size.height/2-100,
+			anchorX: 0.5,
+			anchorY: 0.5
+		});
+		item2.attr({
+			x: size.width/2,
+			y: size.height/2+100,
+			anchorX: 0.5,
+			anchorY: 0.5
+		});
+		
+		var menu = new cc.Menu([item1,item2]);
+		menu.x = 0;
+		menu.y = 0;
+		this.addChild(menu);
 	},
 	initBg:function(){
 		this.backGroundLayer = new CityBackGroundLayer();
@@ -54,15 +84,17 @@ var CityLayer = cc.Layer.extend({
 		return true;
 	},
 	update:function(dt){
+		var centerP = this.camera.getWatchP();
+		
 		var wSize = cc.winSize;
-		this.x = wSize.width/2-this.hero.x;
+		this.x = wSize.width/2-centerP.x;
 		if(this.x >= 0){
 			this.x = 0;
 		}else if(this.x < wSize.width-this.backGroundLayer.getMapWidth()){
 			this.x = wSize.width-this.backGroundLayer.getMapWidth();
 		}
 
-		this.y = wSize.height/2-this.hero.y;
+		this.y = wSize.height/2-centerP.y;
 		if(this.y >= 0){
 			this.y = 0;
 		}else if(this.y < wSize.height-this.backGroundLayer.getMapHeight()){
