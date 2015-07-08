@@ -23,7 +23,11 @@ var CityLayer = cc.Layer.extend({
 		this.addChild(this.backGroundLayer);
 	},
 	createHero:function(){
-		this.hero = new GamePlayer(heroInfo.name,res.Hero_png,res.Hero_plist,heroInfo.walkSpeed);
+		var stateInfo = [];
+		stateInfo[STATE.STAND] = {num:10,preFileName:"stand/stand",repeatTime:-1};
+		stateInfo[STATE.WALK] = {num:10,preFileName:"walk/walk",repeatTime:-1};
+		
+		this.hero = new GamePlayer(heroInfo.name,res.Hero_png,res.Hero_plist,heroInfo.walkSpeed,stateInfo,"#stand/stand0.png");
 		this.addChild(this.hero);
 		this.hero.attr({
 			x:50,
