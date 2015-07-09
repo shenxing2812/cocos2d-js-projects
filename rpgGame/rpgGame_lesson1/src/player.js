@@ -4,13 +4,18 @@ var GamePlayer = cc.Sprite.extend({
 	moveSpeed:null,
 	state:null,
 	statesInfos:null,
-	alllActions:[],
+	allActions:null,
+	myWidth:0,
+	myHeight:0,
+	_dir:null,
 	ctor:function(name,resPng,resPlist,moveSpeed,statesInfos,defaultSp){
 		this._super();
 		this.moveSpeed = moveSpeed;
 		this.statesInfos = statesInfos;
 		this.anchorX = 0.5;
 		this.anchorY = 0;
+		
+		this.allActions = {};
 		
 		cc.spriteFrameCache.addSpriteFrames(resPlist);
 		this.spriteSheep = new cc.SpriteBatchNode(resPng);
@@ -20,6 +25,9 @@ var GamePlayer = cc.Sprite.extend({
 		this.spriteSheep.addChild(this.sprite);
 		this.initActions();
 		
+		this.myWidth = this.sprite.width;
+		this.myHeight = this.sprite.height;
+		
 		var lab_name = new cc.LabelTTF();
 		lab_name.attr({
 			y:this.sprite.height/2,
@@ -27,22 +35,22 @@ var GamePlayer = cc.Sprite.extend({
 		});
 		lab_name.setString(name);
 		this.addChild(lab_name);
-		
+		_dir = DIR.LEFT;
 		this.setState(STATE.STAND);
 	},
 	moveTo:function(p,endFun){
 		this.setState(STATE.WALK);
 		var me = this;
 		var finish = new cc.CallFunc(function(){
-			cc.log("move finish");
+		//	cc.log("move finish");
 			if(endFun)
 				endFun();
 			me.setState(STATE.STAND);
 		}, this);
 		if(p.x > this.getPosition().x){
-			this.dir(DIR.RIGHT);
+			this.setDir(DIR.RIGHT);
 		}else{
-			this.dir(DIR.LEFT);
+			this.setDir(DIR.LEFT);
 		}
 		var distance = cc.pDistance(this.getPosition(), p);
 		var time = distance/this.moveSpeed;
@@ -57,7 +65,7 @@ var GamePlayer = cc.Sprite.extend({
 			var temp = this.statesInfos[item];
 			if(!temp)
 				continue;
-			this.alllActions[item] = this.createAction(temp.num, temp.preFileName, temp.repeatTime);
+			this.allActions[item] = this.createAction(temp.num, temp.preFileName, temp.repeatTime);
 		}
 	},
 	onExit:function(){
@@ -69,19 +77,23 @@ var GamePlayer = cc.Sprite.extend({
 		}
 		this._super();
 	},
-	dir:function(_dir){
+	setDir:function(_dir){
+		this._dir = _dir;
 		if(_dir == DIR.LEFT){
 			this.sprite.scaleX = 1;
 		}else{
 			this.sprite.scaleX = -1;
 		}
 	},
+	getDir:function(){
+		return this._dir
+	},
 	setState:function(_state){
 		if(this.state == _state)
 			return;
 		this.state = _state;
 		this.sprite.stopAllActions();
-		var action = this.alllActions[_state];
+		var action = this.allActions[_state];
 		if(action)
 			this.sprite.runAction(action);
 	},
@@ -89,6 +101,7 @@ var GamePlayer = cc.Sprite.extend({
 		var animFrames = [];
 		for (var i = 0; i < num; i++) {
 			var str = preFileName + i + ".png";
+		//	cc.log("frame str="+str);
 			var frame = cc.spriteFrameCache.getSpriteFrame(str);
 			animFrames.push(frame);
 		}
@@ -96,5 +109,14 @@ var GamePlayer = cc.Sprite.extend({
 		var action = new cc.RepeatForever(new cc.Animate(animation));
 		action.retain();
 		return action;
+	},
+	getMyWidth:function(){
+		return this.myWidth;
+	},
+	getMyHeight:function(){
+		return this.myHeight;
+	},
+	getFrontP:function(){
+		return cc.p(this._dir==DIR.LEFT?this.x-this.getMyWidth()/2:this.x+this.getMyWidth()/2,this.y);
 	}
 });

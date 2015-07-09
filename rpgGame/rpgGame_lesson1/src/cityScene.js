@@ -11,6 +11,7 @@ var CityLayer = cc.Layer.extend({
 	backGroundLayer:null,
 	hero:null,
 	camera:null,
+	npc:null,
 	ctor:function () {
 		this._super();
 		this.initBg();
@@ -22,31 +23,37 @@ var CityLayer = cc.Layer.extend({
 	},
 	initCamera:function(){
 		this.camera = new Camera(this.hero);
-		var size = cc.winSize;
-		var item1 = new cc.MenuItemLabel("飞",function(){
-			this.camera.flyTo(1, cc.p(1000,200));
-		},this);
-		var item2 = new cc.MenuItemLabel("主角",function(){
-			this.camera.isWatchHero = true;
-		},this);
-		
-		item1.attr({
-			x: size.width/2,
-			y: size.height/2-100,
-			anchorX: 0.5,
-			anchorY: 0.5
-		});
-		item2.attr({
-			x: size.width/2,
-			y: size.height/2+100,
-			anchorX: 0.5,
-			anchorY: 0.5
-		});
-		
-		var menu = new cc.Menu([item1,item2]);
-		menu.x = 0;
-		menu.y = 0;
-		this.addChild(menu);
+		this.addChild(this.camera);
+//		var size = cc.winSize;
+//		var label1 = new cc.LabelTTF("飞", "Arial", 24);
+//		var label2 = new cc.LabelTTF("主角", "Arial", 24);
+//		var me = this;
+//		var item1 = new cc.MenuItemLabel(label1,function(){
+//			me.camera.flyTo(1, cc.p(1400,200),function(){
+//				me.camera.isWatchHero = true;
+//			});
+//		},this);
+//		var item2 = new cc.MenuItemLabel(label2,function(){
+//			me.camera.isWatchHero = true;
+//		},this);
+//		
+//		item1.attr({
+//			x: size.width/2,
+//			y: size.height/2-100,
+//			anchorX: 0.5,
+//			anchorY: 0.5
+//		});
+//		item2.attr({
+//			x: size.width/2,
+//			y: size.height/2+100,
+//			anchorX: 0.5,
+//			anchorY: 0.5
+//		});
+//		
+//		var menu = new cc.Menu(item1,item2);
+//		menu.x = 0;
+//		menu.y = 0;
+//		this.addChild(menu);
 	},
 	initBg:function(){
 		this.backGroundLayer = new CityBackGroundLayer();
@@ -60,16 +67,16 @@ var CityLayer = cc.Layer.extend({
 		this.hero = new GamePlayer(heroInfo.name,res.Hero_png,res.Hero_plist,heroInfo.walkSpeed,stateInfo,"#stand/stand0.png");
 		this.addChild(this.hero);
 		this.hero.attr({
-			x:50,
+			x:100,
 			y:100
 		});
-		this.hero.dir(DIR.RIGHT);
+		this.hero.setDir(DIR.RIGHT);
 	},
 	initTouchEvent:function(){
 		cc.eventManager.addListener({
 			event:cc.EventListener.TOUCH_ONE_BY_ONE,
 			swallowTouches: true,
-			onTouchBegan: this.onTouchBegan,
+			onTouchBegan: this.onTouchBegan
 		}, this);
 	},
 	onTouchBegan: function(touch,event){
@@ -85,7 +92,7 @@ var CityLayer = cc.Layer.extend({
 	},
 	update:function(dt){
 		var centerP = this.camera.getWatchP();
-		
+	//	cc.log("cameraX:"+centerP.x);
 		var wSize = cc.winSize;
 		this.x = wSize.width/2-centerP.x;
 		if(this.x >= 0){
@@ -104,7 +111,42 @@ var CityLayer = cc.Layer.extend({
 		this.backGroundLayer.updateAlgin(this.x);
 	},
 	initNPC:function(){
+		var stateInfo = [];
+		stateInfo[STATE.STAND] = {num:10,preFileName:"stand",repeatTime:-1};
+		stateInfo[STATE.WALK] = {num:10,preFileName:"walk",repeatTime:-1};
+
+		var npc = new GamePlayer("NPC",res.Tiger_png,res.Tiger_plist,heroInfo.walkSpeed*1.5,stateInfo,"#stand0.png");
+		this.addChild(npc);
+		npc.attr({
+			x:1350,
+			y:100
+		});
+		npc.setDir(DIR.RIGHT);
 		
+		this.npc = npc;
+		
+		var me = this;
+		
+		cc.eventManager.addListener({
+			event:cc.EventListener.TOUCH_ONE_BY_ONE,
+			swallowTouches: true,
+			onTouchBegan: function(touch,event){
+				var target = event.getCurrentTarget();
+				var locationInNode = target.convertToNodeSpace(touch.getLocation());
+				locationInNode.x += target.getMyWidth()/2;
+				locationInNode.y += target.getMyHeight()/2;
+				var rect = cc.rect(0, 0, target.getMyWidth(), target.getMyHeight());
+		//		cc.log("rectW:"+rect.width+" rectH:"+rect.height+" px:"+locationInNode.x+" py:"+locationInNode.y+"npcW:"+npc.width);
+				if (cc.rectContainsPoint(rect, locationInNode)) {
+					me.hero.moveTo(npc.getFrontP(),function(){
+						me.hero.setDir(-npc.getDir());
+						cc.log("接受任务");
+					});
+					return true;
+				}
+				return false;
+			}
+		}, npc);
 	},
 	onExit:function(){
 		cc.eventManager.removeAllListeners();
