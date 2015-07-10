@@ -3,6 +3,15 @@ var CityScene = cc.Scene.extend({
 		this._super();
 		var layer = new CityLayer();
 		this.addChild(layer);
+		
+		var windowLayer = new HeroInfoWnd();
+//		windowLayer.attr({
+//			anchorX: 0,
+//			anchorY: 1,
+//			x:0,
+//			y:cc.winSize.height
+//		});
+		this.addChild(windowLayer);
 	}
 });
 

@@ -5,6 +5,7 @@ var res = {
     Hero_plist:"res/hero.plist",
     Tiger_png:"res/tiger.png",
     Tiger_plist:"res/tiger.plist",
+    HeroInfoWnd_json:"res/HeroInfoWnd.json",
     Map1_1_png : "res/400000.png",
     Map1_2_png : "res/400000_2.png",
     Map1_3_png : "res/400000_3.png"

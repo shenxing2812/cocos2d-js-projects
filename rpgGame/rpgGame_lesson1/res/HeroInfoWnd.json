@@ -1,0 +1,73 @@
+{
+  "ID": "a2ee0952-26b5-49ae-8bf9-4f1d6279b798",
+  "Version": "2.3.0.1",
+  "Name": "HeroInfoWnd",
+  "Content": {
+    "Content": {
+      "Animation": {
+        "Duration": 0,
+        "Speed": 1.0,
+        "Timelines": [],
+        "ctype": "TimelineActionData"
+      },
+      "AnimationList": [],
+      "ObjectData": {
+        "Children": [
+          {
+            "FileData": {
+              "Type": "Normal",
+              "Path": "gameBg.png",
+              "Plist": ""
+            },
+            "BlendFunc": {
+              "Src": 770,
+              "Dst": 771
+            },
+            "AnchorPoint": {},
+            "Position": {
+              "X": 3.1957,
+              "Y": 401.7214
+            },
+            "Scale": {
+              "ScaleX": 0.5653,
+              "ScaleY": 0.4219
+            },
+            "CColor": {},
+            "IconVisible": false,
+            "PrePosition": {
+              "X": 0.0028,
+              "Y": 0.6277
+            },
+            "PreSize": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "LeftMargin": 3.1957,
+            "RightMargin": 341.8043,
+            "TopMargin": -318.7214,
+            "BottomMargin": 401.7214,
+            "Tag": 1037,
+            "ActionTag": -468857172,
+            "Size": {
+              "X": 791.0,
+              "Y": 557.0
+            },
+            "Name": "gameBg_1",
+            "ctype": "SpriteObjectData"
+          }
+        ],
+        "Size": {
+          "X": 1136.0,
+          "Y": 640.0
+        },
+        "Name": "Scene",
+        "ctype": "SingleNodeObjectData"
+      },
+      "UsedResources": [
+        "gameBg.png"
+      ],
+      "ctype": "GameProjectData"
+    }
+  },
+  "Type": "Scene"
+}
