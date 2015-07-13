@@ -5,12 +5,12 @@ var CityScene = cc.Scene.extend({
 		this.addChild(layer);
 		
 		var windowLayer = new HeroInfoWnd();
-//		windowLayer.attr({
-//			anchorX: 0,
-//			anchorY: 1,
-//			x:0,
-//			y:cc.winSize.height
-//		});
+		windowLayer.attr({
+			anchorX: 0,
+			anchorY: 0,
+			x:0,
+			y:0
+		});
 		this.addChild(windowLayer);
 	}
 });
@@ -28,7 +28,26 @@ var CityLayer = cc.Layer.extend({
 		this.initTouchEvent();
 		this.initNPC();
 		this.initCamera();
+		this.initCustomEvent();
 		this.scheduleUpdate();
+	},
+	initCustomEvent:function(){
+		var me = this;
+		cc.eventManager.addCustomListener("changeZuoqi", function(event){
+			heroInfo.isRideTiger = !heroInfo.isRideTiger;
+			var stateInfo = [];
+			if(heroInfo.isRideTiger){
+				stateInfo[STATE.STAND] = {num:10,preFileName:"stand_1/stand",repeatTime:-1};
+				stateInfo[STATE.WALK] = {num:10,preFileName:"walk_1/walk",repeatTime:-1};
+				me.hero.changeRes(res.Hero_with_tiger_png,res.Hero_with_tiger_plist,heroInfo.walkSpeed*1.5,stateInfo,"#stand_1/stand0.png");
+			}else{
+				stateInfo[STATE.STAND] = {num:10,preFileName:"stand/stand",repeatTime:-1};
+				stateInfo[STATE.WALK] = {num:10,preFileName:"walk/walk",repeatTime:-1};
+				me.hero.changeRes(res.Hero_png,res.Hero_plist,heroInfo.walkSpeed,stateInfo,"#stand/stand0.png");
+			}
+			
+		//	this.hero
+		});
 	},
 	initCamera:function(){
 		this.camera = new Camera(this.hero);

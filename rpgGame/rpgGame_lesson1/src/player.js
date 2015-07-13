@@ -8,6 +8,7 @@ var GamePlayer = cc.Sprite.extend({
 	myWidth:0,
 	myHeight:0,
 	_dir:null,
+	lab_name:null,
 	ctor:function(name,resPng,resPlist,moveSpeed,statesInfos,defaultSp){
 		this._super();
 		this.moveSpeed = moveSpeed;
@@ -37,6 +38,37 @@ var GamePlayer = cc.Sprite.extend({
 		this.addChild(lab_name);
 		_dir = DIR.LEFT;
 		this.setState(STATE.STAND);
+		this.lab_name = lab_name;
+	},
+	changeRes:function(resPng,resPlist,moveSpeed,statesInfos,defaultSp){
+		this.moveSpeed = moveSpeed;
+		this.statesInfos = statesInfos;
+		this.sprite.stopAllActions();
+		this.clearActions();
+		
+		if(this.spriteSheep){
+			this.spriteSheep.removeFromParent();
+		}
+		cc.spriteFrameCache.addSpriteFrames(resPlist);
+		this.spriteSheep = new cc.SpriteBatchNode(resPng);
+		this.addChild(this.spriteSheep);
+		
+		
+		
+		this.sprite = new cc.Sprite(defaultSp);
+		this.spriteSheep.addChild(this.sprite);
+		this.initActions();
+
+		this.myWidth = this.sprite.width;
+		this.myHeight = this.sprite.height;
+		
+		this.lab_name.attr({
+			y:this.sprite.height/2,
+			anchorY:0
+		});
+		
+		this.setState(STATE.STAND);
+		this.setDir(this.getDir());
 	},
 	moveTo:function(p,endFun){
 		this.setState(STATE.WALK);
@@ -68,13 +100,16 @@ var GamePlayer = cc.Sprite.extend({
 			this.allActions[item] = this.createAction(temp.num, temp.preFileName, temp.repeatTime);
 		}
 	},
-	onExit:function(){
+	clearActions:function(){
 		for ( var item in this.alllActions) {
 			var temp = this.alllActions[item];
 			if(!temp)
 				continue;
 			temp.release();
 		}
+	},
+	onExit:function(){
+		this.clearActions();
 		this._super();
 	},
 	setDir:function(_dir){

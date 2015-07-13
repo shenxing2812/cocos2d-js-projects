@@ -16,3 +16,4 @@ var heroInfo = {};
 heroInfo.name = "主角";
 heroInfo.level = 1;
 heroInfo.walkSpeed = 300;
+heroInfo.isRideTiger = false;

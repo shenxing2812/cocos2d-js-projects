@@ -16,44 +16,302 @@
           {
             "FileData": {
               "Type": "Normal",
-              "Path": "gameBg.png",
+              "Path": "2.png",
               "Plist": ""
             },
             "BlendFunc": {
-              "Src": 770,
+              "Src": 1,
               "Dst": 771
             },
-            "AnchorPoint": {},
+            "AnchorPoint": {
+              "ScaleX": 0.5,
+              "ScaleY": 0.5
+            },
             "Position": {
-              "X": 3.1957,
-              "Y": 401.7214
+              "X": 230.9056,
+              "Y": 578.9504
             },
             "Scale": {
-              "ScaleX": 0.5653,
-              "ScaleY": 0.4219
+              "ScaleX": 1.0,
+              "ScaleY": 1.0
             },
             "CColor": {},
             "IconVisible": false,
             "PrePosition": {
-              "X": 0.0028,
-              "Y": 0.6277
+              "X": 0.2033,
+              "Y": 0.9046
             },
             "PreSize": {
               "X": 0.0,
               "Y": 0.0
             },
-            "LeftMargin": 3.1957,
-            "RightMargin": 341.8043,
-            "TopMargin": -318.7214,
-            "BottomMargin": 401.7214,
-            "Tag": 1037,
-            "ActionTag": -468857172,
+            "LeftMargin": 16.4056,
+            "RightMargin": 690.5944,
+            "TopMargin": 3.0496,
+            "BottomMargin": 520.9504,
+            "Tag": 4,
+            "ActionTag": -1030282490,
             "Size": {
-              "X": 791.0,
-              "Y": 557.0
+              "X": 429.0,
+              "Y": 116.0
             },
-            "Name": "gameBg_1",
+            "Name": "Sprite_2",
             "ctype": "SpriteObjectData"
+          },
+          {
+            "FileData": {
+              "Type": "Normal",
+              "Path": "1.png",
+              "Plist": ""
+            },
+            "BlendFunc": {
+              "Src": 1,
+              "Dst": 771
+            },
+            "AnchorPoint": {
+              "ScaleX": 0.5,
+              "ScaleY": 0.5
+            },
+            "Position": {
+              "X": 214.6127,
+              "Y": 571.9114
+            },
+            "Scale": {
+              "ScaleX": 1.0,
+              "ScaleY": 1.0
+            },
+            "CColor": {},
+            "IconVisible": false,
+            "PrePosition": {
+              "X": 0.1889,
+              "Y": 0.8936
+            },
+            "PreSize": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "LeftMargin": 0.1127,
+            "RightMargin": 706.8873,
+            "TopMargin": 10.0886,
+            "BottomMargin": 513.9114,
+            "Tag": 5,
+            "ActionTag": 2057584312,
+            "Size": {
+              "X": 429.0,
+              "Y": 116.0
+            },
+            "Name": "Sprite_3",
+            "ctype": "SpriteObjectData"
+          },
+          {
+            "FileData": {
+              "Type": "Normal",
+              "Path": "11.png",
+              "Plist": ""
+            },
+            "Scale9Width": 71,
+            "Scale9Height": 72,
+            "AnchorPoint": {
+              "ScaleX": 0.5,
+              "ScaleY": 0.5
+            },
+            "Position": {
+              "X": 390.8301,
+              "Y": 585.9022
+            },
+            "Scale": {
+              "ScaleX": 1.0,
+              "ScaleY": 1.0
+            },
+            "CColor": {},
+            "IconVisible": false,
+            "PrePosition": {
+              "X": 0.344,
+              "Y": 0.9155
+            },
+            "PreSize": {
+              "X": 0.0625,
+              "Y": 0.1125
+            },
+            "LeftMargin": 355.3301,
+            "RightMargin": 709.6699,
+            "TopMargin": 18.0978,
+            "BottomMargin": 549.9022,
+            "Tag": 6,
+            "ActionTag": -738685054,
+            "Size": {
+              "X": 71.0,
+              "Y": 72.0
+            },
+            "Name": "Image_1",
+            "ctype": "ImageViewObjectData"
+          },
+          {
+            "FontSize": 20,
+            "LabelText": "Text Label",
+            "OutlineColor": {
+              "G": 0,
+              "B": 0
+            },
+            "ShadowColor": {
+              "R": 110,
+              "G": 110,
+              "B": 110
+            },
+            "AnchorPoint": {
+              "ScaleX": 0.5,
+              "ScaleY": 0.5
+            },
+            "Position": {
+              "X": 192.0765,
+              "Y": 612.9198
+            },
+            "Scale": {
+              "ScaleX": 1.0,
+              "ScaleY": 1.0
+            },
+            "CColor": {},
+            "IconVisible": false,
+            "PrePosition": {
+              "X": 0.1691,
+              "Y": 0.9577
+            },
+            "PreSize": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "LeftMargin": 146.5765,
+            "RightMargin": 898.4235,
+            "TopMargin": 15.5802,
+            "BottomMargin": 601.4198,
+            "Tag": 7,
+            "ActionTag": 1310611500,
+            "Size": {
+              "X": 91.0,
+              "Y": 23.0
+            },
+            "Name": "txt_name",
+            "ctype": "TextObjectData"
+          },
+          {
+            "FontSize": 20,
+            "LabelText": "5",
+            "OutlineColor": {
+              "G": 0,
+              "B": 0
+            },
+            "ShadowColor": {
+              "R": 110,
+              "G": 110,
+              "B": 110
+            },
+            "AnchorPoint": {
+              "ScaleX": 0.5,
+              "ScaleY": 0.5
+            },
+            "Position": {
+              "X": 334.8443,
+              "Y": 617.6028
+            },
+            "Scale": {
+              "ScaleX": 1.0,
+              "ScaleY": 1.0
+            },
+            "CColor": {},
+            "IconVisible": false,
+            "PrePosition": {
+              "X": 0.2948,
+              "Y": 0.965
+            },
+            "PreSize": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "LeftMargin": 329.3443,
+            "RightMargin": 795.6558,
+            "TopMargin": 10.8972,
+            "BottomMargin": 606.1028,
+            "Tag": 8,
+            "ActionTag": 1045892154,
+            "Size": {
+              "X": 11.0,
+              "Y": 23.0
+            },
+            "Name": "txt_level",
+            "ctype": "TextObjectData"
+          },
+          {
+            "FontSize": 14,
+            "ButtonText": "坐骑",
+            "TextColor": {
+              "R": 65,
+              "G": 65,
+              "B": 70
+            },
+            "DisabledFileData": {
+              "Type": "Default",
+              "Path": "Default/Button_Disable.png",
+              "Plist": ""
+            },
+            "PressedFileData": {
+              "Type": "Default",
+              "Path": "Default/Button_Press.png",
+              "Plist": ""
+            },
+            "NormalFileData": {
+              "Type": "Default",
+              "Path": "Default/Button_Normal.png",
+              "Plist": ""
+            },
+            "Scale9Enable": true,
+            "Scale9OriginX": 15,
+            "Scale9OriginY": 11,
+            "Scale9Width": 16,
+            "Scale9Height": 14,
+            "OutlineColor": {
+              "G": 0,
+              "B": 0
+            },
+            "ShadowColor": {
+              "R": 110,
+              "G": 110,
+              "B": 110
+            },
+            "TouchEnable": true,
+            "AnchorPoint": {
+              "ScaleX": 0.5,
+              "ScaleY": 0.5
+            },
+            "Position": {
+              "X": 118.6997,
+              "Y": 571.7947
+            },
+            "Scale": {
+              "ScaleX": 1.0,
+              "ScaleY": 1.0
+            },
+            "CColor": {},
+            "IconVisible": false,
+            "PrePosition": {
+              "X": 0.1045,
+              "Y": 0.8934
+            },
+            "PreSize": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "LeftMargin": 95.6997,
+            "RightMargin": 994.3003,
+            "TopMargin": 50.2053,
+            "BottomMargin": 553.7947,
+            "Tag": 9,
+            "ActionTag": -1976857649,
+            "Size": {
+              "X": 46.0,
+              "Y": 36.0
+            },
+            "Name": "btn_tiger",
+            "ctype": "ButtonObjectData"
           }
         ],
         "Size": {
@@ -64,7 +322,12 @@
         "ctype": "SingleNodeObjectData"
       },
       "UsedResources": [
-        "gameBg.png"
+        "2.png",
+        "Default/Button_Press.png",
+        "Default/Button_Disable.png",
+        "11.png",
+        "1.png",
+        "Default/Button_Normal.png"
       ],
       "ctype": "GameProjectData"
     }
