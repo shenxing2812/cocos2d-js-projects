@@ -9,12 +9,13 @@ var GamePlayer = cc.Sprite.extend({
 	myHeight:0,
 	_dir:null,
 	lab_name:null,
+	initP:null,
+	hp:100,
+	mp:100,
 	ctor:function(name,resPng,resPlist,moveSpeed,statesInfos,defaultSp){
 		this._super();
 		this.moveSpeed = moveSpeed;
 		this.statesInfos = statesInfos;
-		this.anchorX = 0.5;
-		this.anchorY = 0;
 		
 		this.allActions = {};
 		
@@ -25,13 +26,16 @@ var GamePlayer = cc.Sprite.extend({
 		this.sprite = new cc.Sprite(defaultSp);
 		this.spriteSheep.addChild(this.sprite);
 		this.initActions();
+		this.sprite.attr({
+			anchorY : 0
+		});
 		
 		this.myWidth = this.sprite.width;
 		this.myHeight = this.sprite.height;
 		
 		var lab_name = new cc.LabelTTF();
 		lab_name.attr({
-			y:this.sprite.height/2,
+			y:this.sprite.height,
 			anchorY:0
 		});
 		lab_name.setString(name);
@@ -52,7 +56,9 @@ var GamePlayer = cc.Sprite.extend({
 		cc.spriteFrameCache.addSpriteFrames(resPlist);
 		this.spriteSheep = new cc.SpriteBatchNode(resPng);
 		this.addChild(this.spriteSheep);
-		
+		this.sprite.attr({
+			anchorY : 0
+		});
 		
 		
 		this.sprite = new cc.Sprite(defaultSp);
@@ -63,7 +69,7 @@ var GamePlayer = cc.Sprite.extend({
 		this.myHeight = this.sprite.height;
 		
 		this.lab_name.attr({
-			y:this.sprite.height/2,
+			y:this.sprite.height,
 			anchorY:0
 		});
 		
@@ -141,7 +147,15 @@ var GamePlayer = cc.Sprite.extend({
 			animFrames.push(frame);
 		}
 		var animation = new cc.Animation(animFrames, 0.1);
-		var action = new cc.RepeatForever(new cc.Animate(animation));
+		var action;
+		if(repeatTime == -1){
+			action = new cc.RepeatForever(new cc.Animate(animation));
+		}else{
+			var me = this;
+			action = cc.sequence([new cc.Animate(animation).repeat(repeatTime),cc.callFunc(function(){
+				me.setState(STATE.STAND);
+			})]);
+		}
 		action.retain();
 		return action;
 	},
@@ -153,5 +167,12 @@ var GamePlayer = cc.Sprite.extend({
 	},
 	getFrontP:function(){
 		return cc.p(this._dir==DIR.LEFT?this.x-this.getMyWidth()/2:this.x+this.getMyWidth()/2,this.y);
+	},
+	setInitP:function(p){
+		this.initP = p;
+		this.setPosition(p);
+	},
+	getInitP:function(){
+		return this.initP;
 	}
 });

@@ -17,6 +17,8 @@
         "src/player.js",
         "src/camera.js",
         "src/heroInfoWnd.js",
+        "src/fightScene.js",
+        "src/fightPlayer.js",
         "src/app.js"
     ]
 }

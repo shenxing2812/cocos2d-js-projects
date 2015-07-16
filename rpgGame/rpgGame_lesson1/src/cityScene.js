@@ -146,7 +146,7 @@ var CityLayer = cc.Layer.extend({
 		var npc = new GamePlayer("NPC",res.Tiger_png,res.Tiger_plist,heroInfo.walkSpeed*1.5,stateInfo,"#stand0.png");
 		this.addChild(npc);
 		npc.attr({
-			x:1350,
+			x:300,
 			y:100
 		});
 		npc.setDir(DIR.RIGHT);
@@ -168,7 +168,11 @@ var CityLayer = cc.Layer.extend({
 				if (cc.rectContainsPoint(rect, locationInNode)) {
 					me.hero.moveTo(npc.getFrontP(),function(){
 						me.hero.setDir(-npc.getDir());
-						cc.log("接受任务");
+					//	cc.log("接受任务");
+						me.runAction(cc.sequence([new cc.DelayTime(0.5),new cc.CallFunc(function(){
+							cc.log("战斗场景");
+							cc.director.pushScene(new FightScene());
+						})]));
 					});
 					return true;
 				}
