@@ -68,6 +68,7 @@ var FightLayer = cc.Layer.extend({
 			cc.log("砍他");
 			this.fightPlayer.addCommand({"target":this.hero,"time":0.5,"name":"moveToP","p":this.monster.getFrontP()});
 			this.fightPlayer.addCommand({"target":this.hero,"time":0.5,"name":"changeState","state":STATE.ATTACK});
+			this.fightPlayer.addCommand({"target":this.monster,"time":0.1,"name":"addSkill"});
 			this.fightPlayer.addCommand({"target":this.monster,"time":0.5,"name":"changeState","state":STATE.BEATTACK});
 			this.fightPlayer.addCommand({"target":this.monster,"time":0.1,"name":"hurt","num":-100});
 			this.fightPlayer.addCommand({"target":this.hero,"time":0.1,"name":"moveToP","p":this.hero.getInitP()});
@@ -129,11 +130,33 @@ var FightLayer = cc.Layer.extend({
 			this.unscheduleUpdate();
 		
 			var label1 = new cc.LabelTTF("游戏结束", "Arial", 50);
+			
+			var size = cc.winSize;
+			
 			label1.attr({
-				x:cc.winSize.width/2,
-				y:cc.winSize.height/2,
+				x:size.width/2,
+				y:size.height/2
 			});
 			this.addChild(label1);
+			
+			var label2 = new cc.LabelTTF("确定", "Arial", 60);
+			var item1 = new cc.MenuItemLabel(label2,function(){
+				cc.director.pushScene(new CityScene());
+			});
+			item1.attr({
+				x:(size.width-item1.width)/2,
+				y:size.height/2-100,
+				anchorX:0,
+				anchorY:0
+			});
+			var menu = new cc.Menu(item1);
+			menu.attr({
+				x:0,
+				y:0,
+				anchorX:0,
+				anchorY:0
+			});
+			this.addChild(menu);
 		}
 		
 	},

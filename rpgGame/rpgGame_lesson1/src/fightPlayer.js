@@ -30,9 +30,9 @@ var FightPlayer = cc.Node.extend({
 				this.curCommand.target.setState(this.curCommand.state);
 			}else if(commandName == "die"){
 				var target = this.curCommand.target;
-				var move = cc.spawn([cc.scaleTo(0.2, 0.1, 1),cc.moveTo(0.3, this.curCommand.target.x,this.curCommand.target.y+100),cc.fadeTo(1, 0)]);
+				var move = cc.spawn([cc.scaleTo(0.2, 0.1, 1),cc.moveTo(0.3, this.curCommand.target.x,this.curCommand.target.y+100),cc.fadeTo(0.3, 0)]);
 				var action = cc.sequence([move,cc.callFunc(function(){
-					
+					target.removeFromParent();
 				})]);
 				this.curCommand.target.runAction(action);
 			}else if(commandName == "hurt"){
@@ -50,6 +50,15 @@ var FightPlayer = cc.Node.extend({
 					target.hp += num;
 				})]);
 				label.runAction(action);
+			}else if(commandName == "addSkill"){
+				//#stand/stand0.png #skill1_0.png
+				var skill = new Skill(res.Skill_png,res.Skill_plist,"skill1_",11,"#skill1_0.png");
+		//		var skill = new Skill(res.Hero_png,res.Hero_plist,"attack/attack",10);
+				skill.attr({
+					x:this.curCommand.target.x,
+					y:this.curCommand.target.y
+				});
+				this.addChild(skill);
 			}
 		}else{
 			this.isExcuteing = false;

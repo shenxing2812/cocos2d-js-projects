@@ -19,6 +19,7 @@
         "src/heroInfoWnd.js",
         "src/fightScene.js",
         "src/fightPlayer.js",
+        "src/skill.js",
         "src/app.js"
     ]
 }
