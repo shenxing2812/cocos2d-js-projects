@@ -27,6 +27,16 @@ var HelloWorldLayer = cc.Layer.extend({
         menu.x = 0;
         menu.y = 0;
         this.addChild(menu, 1);
+        
+//        var btn = new ccui.Button(res.StartNormal_png);
+//        this.addChild(btn);
+//        btn.attr({
+//        	x: size.width/2,
+//        	y: size.height/2-100
+//        });
+//        btn.addClickEventListener(function(){
+//        	cc.log("btn click");
+//        });
     }
 });
 

@@ -47,7 +47,10 @@ var GamePlayer = cc.Sprite.extend({
 	changeRes:function(resPng,resPlist,moveSpeed,statesInfos,defaultSp){
 		this.moveSpeed = moveSpeed;
 		this.statesInfos = statesInfos;
-		this.sprite.stopAllActions();
+		if(this.sprite){
+			this.sprite.stopAllActions();
+			this.sprite.removeFromParent();
+		}
 		this.clearActions();
 		
 		if(this.spriteSheep){
@@ -56,14 +59,15 @@ var GamePlayer = cc.Sprite.extend({
 		cc.spriteFrameCache.addSpriteFrames(resPlist);
 		this.spriteSheep = new cc.SpriteBatchNode(resPng);
 		this.addChild(this.spriteSheep);
-		this.sprite.attr({
-			anchorY : 0
-		});
+		
 		
 		
 		this.sprite = new cc.Sprite(defaultSp);
 		this.spriteSheep.addChild(this.sprite);
 		this.initActions();
+		this.sprite.attr({
+			anchorY : 0
+		});
 
 		this.myWidth = this.sprite.width;
 		this.myHeight = this.sprite.height;

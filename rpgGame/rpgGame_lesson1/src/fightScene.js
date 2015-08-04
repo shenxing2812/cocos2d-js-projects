@@ -98,6 +98,7 @@ var FightLayer = cc.Layer.extend({
 		this.addChild(menu);
 		
 		this.menu = menu;
+		
 	},
 	update:function(dt){
 		this.hero.mp += 1;

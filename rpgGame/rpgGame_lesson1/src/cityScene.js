@@ -45,8 +45,6 @@ var CityLayer = cc.Layer.extend({
 				stateInfo[STATE.WALK] = {num:10,preFileName:"walk/walk",repeatTime:-1};
 				me.hero.changeRes(res.Hero_png,res.Hero_plist,heroInfo.walkSpeed,stateInfo,"#stand/stand0.png");
 			}
-			
-		//	this.hero
 		});
 	},
 	initCamera:function(){

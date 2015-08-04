@@ -59,7 +59,7 @@
             <key>stand_1/stand4.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{674,1272},{336,209}}</string>
+                <string>{{682,941},{336,209}}</string>
                 <key>offset</key>
                 <string>{40,-8}</string>
                 <key>rotated</key>
@@ -72,7 +72,7 @@
             <key>stand_1/stand5.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{338,1286},{334,211}}</string>
+                <string>{{2,1067},{334,211}}</string>
                 <key>offset</key>
                 <string>{40,-8}</string>
                 <key>rotated</key>
@@ -85,7 +85,7 @@
             <key>stand_1/stand6.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,1071},{336,213}}</string>
+                <string>{{686,515},{336,213}}</string>
                 <key>offset</key>
                 <string>{40,-10}</string>
                 <key>rotated</key>
@@ -98,7 +98,7 @@
             <key>stand_1/stand7.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,860},{338,209}}</string>
+                <string>{{682,730},{338,209}}</string>
                 <key>offset</key>
                 <string>{41,-8}</string>
                 <key>rotated</key>
@@ -111,7 +111,7 @@
             <key>stand_1/stand8.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{342,1065},{338,205}}</string>
+                <string>{{2,860},{338,205}}</string>
                 <key>offset</key>
                 <string>{42,-6}</string>
                 <key>rotated</key>
@@ -150,7 +150,7 @@
             <key>walk_1/walk1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,1286},{334,219}}</string>
+                <string>{{342,1065},{334,219}}</string>
                 <key>offset</key>
                 <string>{39,5}</string>
                 <key>rotated</key>
@@ -163,7 +163,7 @@
             <key>walk_1/walk2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{686,521},{322,219}}</string>
+                <string>{{2,1280},{322,219}}</string>
                 <key>offset</key>
                 <string>{22,5}</string>
                 <key>rotated</key>
@@ -228,7 +228,7 @@
             <key>walk_1/walk7.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{722,302},{282,217}}</string>
+                <string>{{326,1286},{282,217}}</string>
                 <key>offset</key>
                 <string>{30,-9}</string>
                 <key>rotated</key>
@@ -241,7 +241,7 @@
             <key>walk_1/walk8.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{682,965},{300,211}}</string>
+                <string>{{722,302},{300,211}}</string>
                 <key>offset</key>
                 <string>{32,-7}</string>
                 <key>rotated</key>
@@ -254,7 +254,7 @@
             <key>walk_1/walk9.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{682,742},{320,221}}</string>
+                <string>{{678,1152},{320,221}}</string>
                 <key>offset</key>
                 <string>{36,-1}</string>
                 <key>rotated</key>
@@ -270,11 +270,11 @@
             <key>format</key>
             <integer>2</integer>
             <key>realTextureFileName</key>
-            <string>heroWithTiger.png</string>
+            <string>hero.png</string>
             <key>size</key>
-            <string>{1012,1507}</string>
+            <string>{1024,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:815a9ca276e9fcc6236cc3e7c8928d43:93920900d4daaba5e018ca0e5143f6bd:506b62aee7c291b748955beeaa1eb227$</string>
+            <string>$TexturePacker:SmartUpdate:6f4629438eb65d08d09a9d5a36f42fcf:1/1$</string>
             <key>textureFileName</key>
             <string>heroWithTiger.png</string>
         </dict>
