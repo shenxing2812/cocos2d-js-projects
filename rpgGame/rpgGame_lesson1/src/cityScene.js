@@ -15,7 +15,9 @@ var CityScene = cc.Scene.extend({
 		
 		layer.npc.setVisible(false);
 		var story = new StoryLayer(storyId,function(){
-			layer.npc.setVisible(true);
+			if(storyId == 1){
+				layer.npc.setVisible(true);
+			}
 			storyId = storyId+1;
 		},layer);
 	}

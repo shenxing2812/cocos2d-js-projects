@@ -94,7 +94,12 @@ var StoryLayer = cc.Layer.extend({
 			}else if(commandName == "dispatchEvent"){
 				var eventName = cmd[1];
 				this.doDispatchEvent(eventName);
+			}else if(commandName == "playMusic"){
+				var fileName = cmd[1];
+				this.playMusic(fileName);
 			}
+			
+			
 			
 		}else{
 			this.finishCmds();
@@ -183,6 +188,8 @@ var StoryLayer = cc.Layer.extend({
 		var stateInfo = [];
 		stateInfo[STATE.STAND] = {num:10,preFileName:"stand/stand",repeatTime:-1};
 		stateInfo[STATE.WALK] = {num:10,preFileName:"walk/walk",repeatTime:-1};
+		stateInfo[STATE.ATTACK] = {num:10,preFileName:"attack/attack",repeatTime:1};
+		stateInfo[STATE.BEATTACK] = {num:7,preFileName:"beAttack/beAttack",repeatTime:1};
 		
 		var p = new GamePlayer(name,res.Hero_png,res.Hero_plist,heroInfo.walkSpeed,stateInfo,"#stand/stand0.png");
 		p.setTag(pid);
@@ -319,6 +326,10 @@ var StoryLayer = cc.Layer.extend({
 	},
 	doDispatchEvent:function(eventName){
 		cc.eventManager.dispatchCustomEvent(eventName);
+		this.excuteCommand();
+	},
+	playMusic:function(fileName){
+		cc.audioEngine.playMusic(fileName, true);
 		this.excuteCommand();
 	}
 });
