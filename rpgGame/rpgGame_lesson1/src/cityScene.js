@@ -4,14 +4,20 @@ var CityScene = cc.Scene.extend({
 		var layer = new CityLayer();
 		this.addChild(layer);
 		
-		var windowLayer = new HeroInfoWnd();
-		windowLayer.attr({
-			anchorX: 0,
-			anchorY: 0,
-			x:0,
-			y:0
-		});
-		this.addChild(windowLayer);
+//		var windowLayer = new HeroInfoWnd();
+//		windowLayer.attr({
+//			anchorX: 0,
+//			anchorY: 0,
+//			x:0,
+//			y:0
+//		});
+//		this.addChild(windowLayer);
+		
+		layer.npc.setVisible(false);
+		var story = new StoryLayer(storyId,function(){
+			layer.npc.setVisible(true);
+			storyId = storyId+1;
+		},layer);
 	}
 });
 
@@ -30,6 +36,8 @@ var CityLayer = cc.Layer.extend({
 		this.initCamera();
 		this.initCustomEvent();
 		this.scheduleUpdate();
+		
+		
 	},
 	initCustomEvent:function(){
 		var me = this;
@@ -91,6 +99,7 @@ var CityLayer = cc.Layer.extend({
 		stateInfo[STATE.WALK] = {num:10,preFileName:"walk/walk",repeatTime:-1};
 		
 		this.hero = new GamePlayer(heroInfo.name,res.Hero_png,res.Hero_plist,heroInfo.walkSpeed,stateInfo,"#stand/stand0.png");
+		this.hero.tag = 9999;
 		this.addChild(this.hero);
 		this.hero.attr({
 			x:100,
@@ -144,10 +153,10 @@ var CityLayer = cc.Layer.extend({
 		var npc = new GamePlayer("NPC",res.Tiger_png,res.Tiger_plist,heroInfo.walkSpeed*1.5,stateInfo,"#stand0.png");
 		this.addChild(npc);
 		npc.attr({
-			x:300,
-			y:100
+			x:1700,
+			y:50
 		});
-		npc.setDir(DIR.RIGHT);
+		npc.setDir(DIR.LEFT);
 		
 		this.npc = npc;
 		

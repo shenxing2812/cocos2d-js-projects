@@ -20,6 +20,7 @@
         "src/fightScene.js",
         "src/fightPlayer.js",
         "src/skill.js",
+        "src/storyManager.js",
         "src/app.js"
     ]
 }

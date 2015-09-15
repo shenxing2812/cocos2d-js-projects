@@ -11,6 +11,8 @@ var res = {
     Skill_png:"res/skill.png",
     Skill_plist:"res/skill.plist",
     Fight_bg_png:"res/1.jpg",
+    Dialog_bg_png:"res/dialogBg.png",
+    Hero_head_png:"res/heroHead.png",
     Map1_1_png : "res/400000.png",
     Map1_2_png : "res/400000_2.png",
     Map1_3_png : "res/400000_3.png"

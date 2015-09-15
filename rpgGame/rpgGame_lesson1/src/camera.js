@@ -1,8 +1,8 @@
 var Camera = cc.Sprite.extend({
-	hero:null,
+	lookObject:null,
 	isWatchHero:true,
 	sp:null,
-	ctor:function(hero){
+	ctor:function(lookObject){
 		this._super();
 		this.sp = new cc.Sprite();
 		this.sp.attr({
@@ -12,11 +12,11 @@ var Camera = cc.Sprite.extend({
 			anchorY: 0
 		});
 		this.addChild(this.sp);
-		this.hero = hero;
+		this.lookObject = lookObject;
 	},
 	getWatchP:function(){
-		if(this.isWatchHero && this.hero){
-			return this.hero.getPosition();
+		if(this.isWatchHero && this.lookObject){
+			return this.lookObject.getPosition();
 		}
 		return this.sp.getPosition();
 	},
@@ -34,5 +34,9 @@ var Camera = cc.Sprite.extend({
 		this.sp.stopActionByTag(1);
 		this.sp.runAction(action);
 
+	},
+	setLookAtObject:function(lookObject){
+		this.isWatchHero = true;
+		this.lookObject = lookObject;
 	}
 });

@@ -134,8 +134,8 @@ var GamePlayer = cc.Sprite.extend({
 		return this._dir
 	},
 	setState:function(_state){
-		if(this.state == _state)
-			return;
+//		if(this.state == _state)
+//			return;
 		this.state = _state;
 		this.sprite.stopAllActions();
 		var action = this.allActions[_state];

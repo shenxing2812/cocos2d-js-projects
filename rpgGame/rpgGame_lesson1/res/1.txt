@@ -1,0 +1,3 @@
+addPlayer,5,"가뉴","각뉴",1
+removePlayer,3,"각뉴"
+wait,3 
