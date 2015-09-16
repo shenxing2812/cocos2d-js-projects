@@ -1,3 +1,0 @@
-addPlayer,5,chun,chun,1
-removePlayer,3,chun
-wait,3 

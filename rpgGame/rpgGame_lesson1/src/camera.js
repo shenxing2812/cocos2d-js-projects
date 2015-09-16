@@ -15,7 +15,7 @@ var Camera = cc.Sprite.extend({
 		this.lookObject = lookObject;
 	},
 	getWatchP:function(){
-		if(this.isWatchHero && this.lookObject){
+		if(this.isWatchHero && this.lookObject != null){
 			return this.lookObject.getPosition();
 		}
 		return this.sp.getPosition();
@@ -36,7 +36,7 @@ var Camera = cc.Sprite.extend({
 
 	},
 	setLookAtObject:function(lookObject){
-		this.isWatchHero = true;
 		this.lookObject = lookObject;
+		this.isWatchHero = true;
 	}
 });

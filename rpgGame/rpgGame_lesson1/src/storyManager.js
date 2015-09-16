@@ -134,29 +134,29 @@ var StoryLayer = cc.Layer.extend({
 	},
 	loadText:function(){
 		//含中文文本无法读取
-//		var fileName = "res/"+this.storyId+".txt";
-//		fileName = "res/"+2+".txt";
-//		cc.log(fileName);
-//		var me = this;
-//		cc.loader.loadTxt(fileName, function(err, data){
-//			if(err || !data){//加载出错
-//				cc.log("err="+err);
-//				cc.log("data="+data);
-//				me.finishCmds();
-//				return;
-//			}else {
-//				cc.log(data);
-//				var strsArray=new Array();
-//				strsArray=data.split(new RegExp('@'));
-//				me.parseCmds(strsArray);
-//			}
-//		});
-		if(this.storyId == 1){
-			this.commands=story1.split(new RegExp('@'));
-		}else if(this.storyId == 2){
-			this.commands=story2.split(new RegExp('@'));
-		}
-		this.excuteCommand();
+		var fileName = "res/"+this.storyId+".txt";
+		cc.log(fileName);
+		var me = this;
+		cc.loader.loadTxt(fileName, function(err, data){
+			if(err || !data){//加载出错
+				cc.log("err="+err);
+				cc.log("data="+data);
+				me.finishCmds();
+				return;
+			}else {
+				cc.log(data);
+				me.commands=data.split(new RegExp('\n'));
+				me.excuteCommand();
+			}
+		});
+//		return;
+//		
+//		if(this.storyId == 1){
+//			this.commands=story1.split(new RegExp('@'));
+//		}else if(this.storyId == 2){
+//			this.commands=story2.split(new RegExp('@'));
+//		}
+//		this.excuteCommand();
 	},
 	finishCmds:function(){
 		this.isExcuteing = false;

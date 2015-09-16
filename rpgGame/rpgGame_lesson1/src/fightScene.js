@@ -101,6 +101,7 @@ var FightLayer = cc.Layer.extend({
 		
 	},
 	update:function(dt){
+	//	super.update(dt);
 		this.hero.mp += 1;
 		this.monster.mp += 0.1;
 		this.checkOver();
