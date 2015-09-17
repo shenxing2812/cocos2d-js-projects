@@ -17,6 +17,10 @@ var CityScene = cc.Scene.extend({
 		var story = new StoryLayer(storyId,function(){
 			if(storyId == 1){
 				layer.npc.setVisible(true);
+			}else if(storyId == 2){
+				storyId = storyId+1;
+				cc.director.pushScene(new CityScene());
+				return;
 			}
 			storyId = storyId+1;
 		},layer);

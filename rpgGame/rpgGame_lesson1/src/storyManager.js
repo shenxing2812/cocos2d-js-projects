@@ -50,12 +50,14 @@ var StoryLayer = cc.Layer.extend({
 				var dir = cmd[3];
 				var x = cmd[4];
 				var y = cmd[5];
+				var isMonster = cmd.length==7?cmd[6]:0
 				cc.log("pid"+pid);
 				cc.log("name"+name);
 				cc.log("dir"+dir);
 				cc.log("x"+x);
 				cc.log("y"+y);
-				this.addPlayer(pid, name, dir, x, y);
+				cc.log("isMonster"+isMonster);
+				this.addPlayer(pid, name, dir, x, y,isMonster);
 			}else if(commandName == "wait"){
 				var time = cmd[1];
 				this.wait(time);
@@ -97,6 +99,10 @@ var StoryLayer = cc.Layer.extend({
 			}else if(commandName == "playMusic"){
 				var fileName = cmd[1];
 				this.playMusic(fileName);
+			}if(commandName == "setPlayerDir"){
+				var pid = cmd[1];
+				var dir= cmd[2];
+				this.setPlayerDir(pid,dir);
 			}
 			
 			
@@ -184,14 +190,25 @@ var StoryLayer = cc.Layer.extend({
 		this.addChild(sp);
 		this.excuteCommand();
 	},
-	addPlayer:function(pid,name,dir,x,y){
+	addPlayer:function(pid,name,dir,x,y,isMonster){
 		var stateInfo = [];
-		stateInfo[STATE.STAND] = {num:10,preFileName:"stand/stand",repeatTime:-1};
-		stateInfo[STATE.WALK] = {num:10,preFileName:"walk/walk",repeatTime:-1};
-		stateInfo[STATE.ATTACK] = {num:10,preFileName:"attack/attack",repeatTime:1};
-		stateInfo[STATE.BEATTACK] = {num:7,preFileName:"beAttack/beAttack",repeatTime:1};
+		var p;
+		if(isMonster == 1){//怪
+			stateInfo[STATE.STAND] = {num:10,preFileName:"stand_200000/stand-",repeatTime:-1};
+			stateInfo[STATE.WALK] = {num:8,preFileName:"walk_200000/walk-",repeatTime:-1};
+			stateInfo[STATE.ATTACK] = {num:9,preFileName:"attack_200000/attack-",repeatTime:1};
+			stateInfo[STATE.BEATTACK] = {num:7,preFileName:"beAttack_200000/beAttack-",repeatTime:1};
+			p = new GamePlayer(name,res.Monster_png,res.Monster_plist,heroInfo.walkSpeed,stateInfo,"#stand_200000/stand-0.png");
+		}else{
+			stateInfo[STATE.STAND] = {num:10,preFileName:"stand/stand",repeatTime:-1};
+			stateInfo[STATE.WALK] = {num:10,preFileName:"walk/walk",repeatTime:-1};
+			stateInfo[STATE.ATTACK] = {num:10,preFileName:"attack/attack",repeatTime:1};
+			stateInfo[STATE.BEATTACK] = {num:7,preFileName:"beAttack/beAttack",repeatTime:1};
+			p = new GamePlayer(name,res.Hero_png,res.Hero_plist,heroInfo.walkSpeed,stateInfo,"#stand/stand0.png");
+		}
 		
-		var p = new GamePlayer(name,res.Hero_png,res.Hero_plist,heroInfo.walkSpeed,stateInfo,"#stand/stand0.png");
+		
+		 
 		p.setTag(pid);
 		this.playerLayer.addChild(p);
 		p.attr({
@@ -330,6 +347,11 @@ var StoryLayer = cc.Layer.extend({
 	},
 	playMusic:function(fileName){
 		cc.audioEngine.playMusic(fileName, true);
+		this.excuteCommand();
+	},
+	setPlayerDir:function(pid,dir){
+		var p = this.playerLayer.getChildByTag(pid);
+		p.setDir(dir);
 		this.excuteCommand();
 	}
 });

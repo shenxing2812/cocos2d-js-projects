@@ -10,6 +10,8 @@ var res = {
     HeroInfoWnd_json:"res/HeroInfoWnd.json",
     Skill_png:"res/skill.png",
     Skill_plist:"res/skill.plist",
+    Monster_png:"res/monster.png",
+    Monster_plist:"res/monster.plist",
     Fight_bg_png:"res/1.jpg",
     Dialog_bg_png:"res/dialogBg.png",
     Hero_head_png:"res/heroHead.png",
